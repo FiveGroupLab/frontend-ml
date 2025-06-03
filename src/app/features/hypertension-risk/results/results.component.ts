@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-results',
+  selector: "app-results",
   imports: [],
-  templateUrl: './results.component.html',
-  styleUrl: './results.component.scss'
+  templateUrl: "./results.component.html",
+  styleUrl: "./results.component.scss",
 })
-export class ResultsComponent {
-
-}
+export class ResultsComponent {}
