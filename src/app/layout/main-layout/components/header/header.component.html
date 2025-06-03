@@ -1,0 +1,31 @@
+<div class="header">
+  <div role="banner">
+    <a href="/" aria-label="Inicio">
+      <img src="assets/imgs/logo.svg" alt="Logo de la empresa" width="40" height="40" />
+    </a>
+  </div>
+  <nav aria-label="Navegación principal">
+    <ul>
+      @for (route of routes; track route) {
+        <li>
+          <a [routerLink]="route.url" [class.active]="route.active">
+            {{ route.name }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+  <div class="user-info">
+    <div class="user-name">Dr. Root</div>
+    <div class="avatar-wrapper">
+      <img
+        class="user-avatar"
+        src="assets/imgs/avatar.png"
+        alt="Imagen de Dr. Root"
+        width="40"
+        height="40"
+      />
+      <div class="avatar-status"></div>
+    </div>
+  </div>
+</div>

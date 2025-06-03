@@ -1,0 +1,48 @@
+// Extra pequeño (xs): < 480px
+@mixin mq-xs {
+  @media (max-width: 479px) {
+    @content;
+  }
+}
+
+// Pequeño (sm): >= 480px
+@mixin mq-sm {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+// Mediano (md): >= 768px
+@mixin mq-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// Grande (lg): >= 992px
+@mixin mq-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+// Extra grande (xl): >= 1200px
+@mixin mq-xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Orientación landscape
+@mixin mq-landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+// Orientación portrait
+@mixin mq-portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}

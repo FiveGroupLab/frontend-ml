@@ -1,0 +1,12 @@
+@use "_media-queries" as *;
+
+.center-inner {
+  padding: 15px;
+
+  @include mq-lg {
+    max-width: 900px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
