@@ -1,0 +1,49 @@
+@use "_fonts" as *;
+@use "_colors" as *;
+
+.results-section app-title {
+  display: block;
+  margin-top: 1rem;
+}
+
+.no-risk-title {
+  margin-top: 2rem;
+  text-align: center;
+  color: $primary-color;
+  font-weight: bold;
+  @include font-subtitle;
+}
+
+.no-risk-description {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.result-based-on {
+  margin-top: 1.5rem;
+}
+
+.result-label {
+  color: $primary-color;
+}
+
+.result-value {
+  font-weight: bold;
+}
+
+.risk-title {
+  margin-top: 2rem;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  @include font-subtitle;
+}
+
+.risk-description {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.button-row {
+  margin-top: 2rem;
+}

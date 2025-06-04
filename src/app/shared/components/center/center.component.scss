@@ -1,7 +1,7 @@
 @use "_media-queries" as *;
 
 .center-inner {
-  padding: 15px;
+  padding: 25px;
 
   @include mq-lg {
     max-width: 900px;

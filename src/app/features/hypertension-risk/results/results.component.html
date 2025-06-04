@@ -1,1 +1,52 @@
-<p>results works!</p>
+<section class="results-section">
+  <h1><app-title title="Resultados de la Evaluación"></app-title></h1>
+  @if (!hasRisk) {
+    <div class="no-risk-title">
+      ✅ Sin riesgo significativo de hipertensión ({{ riskPercent }}%)
+    </div>
+    <div class="no-risk-description">
+      El paciente no presenta indicios de riesgo relevante de hipertensión arterial. Se recomienda
+      mantener hábitos de vida saludables y realizar controles médicos periódicos para preservar su
+      bienestar.
+    </div>
+  } @else {
+    <div class="risk-title">⚠️ Riesgo detectado de hipertensión ({{ riskPercent }}%)</div>
+    <div class="risk-description">
+      El paciente presenta un riesgo considerable de hipertensión arterial. Se aconseja consultar a
+      un profesional de la salud para una evaluación clínica detallada y considerar ajustes en el
+      estilo de vida para reducir el riesgo.
+    </div>
+  }
+  <p class="result-based-on">
+    Este resultado se ha generado a partir del análisis de los siguientes datos proporcionados:
+    <span class="result-label">Masa corporal</span>: <span class="result-value">{{ bodyMass }}</span
+    >, <span class="result-label">Actividad total</span>:
+    <span class="result-value">{{ totalActivity }}</span
+    >, <span class="result-label">Tensión arterial</span>:
+    <span class="result-value">{{ bloodPressure }}</span
+    >, <span class="result-label">Peso promedio</span>:
+    <span class="result-value">{{ averageWeight }}</span
+    >, <span class="result-label">Estatura promedio</span>:
+    <span class="result-value">{{ averageHeight }}</span
+    >, <span class="result-label">Edad</span>: <span class="result-value">{{ age }}</span
+    >.
+  </p>
+  <div nz-row [nzGutter]="[48, 8]">
+    <div
+      nz-col
+      [nzXs]="{ span: 24, offset: 0 }"
+      [nzSm]="{ span: 8, offset: 16 }"
+      [nzMd]="{ span: 6, offset: 18 }"
+    >
+      <button
+        class="button-row"
+        nz-button
+        nzBlock="true"
+        nzType="dashed"
+        (click)="goToEvaluation()"
+      >
+        Nueva evaluación
+      </button>
+    </div>
+  </div>
+</section>
