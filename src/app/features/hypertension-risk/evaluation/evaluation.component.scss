@@ -39,7 +39,7 @@
   justify-content: center;
   border: 2px solid $primary-color;
   border-radius: 50%;
-  margin-right: 0.75rem;
+  margin-right: 0.5rem;
   background: transparent;
   box-sizing: border-box;
   padding: 2px;
@@ -55,7 +55,7 @@
   border-radius: 50%;
   color: $white-color;
   font-weight: $font-weight-regular;
-  font-size: 1.1rem;
+  font-size: $font-size-sm;
 }
 
 .step-label {
@@ -63,4 +63,20 @@
   margin-left: 0.25rem;
   font-size: $font-size-lg;
   @include font-subtitle-custom($font-weight-medium);
+}
+
+nz-input-number {
+  width: 100%;
+}
+
+form[nz-form] {
+  margin-top: 2rem;
+}
+
+nz-form-label {
+  font-weight: $font-weight-medium;
+}
+
+.button-row {
+  margin-top: 0.5rem;
 }

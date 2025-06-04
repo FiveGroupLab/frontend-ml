@@ -8,7 +8,16 @@
 @primary-color: #4c4ddc;
 @border-radius-base: 8px;
 @font-family-base: "Inter", sans-serif;
+@input-height-base: 56px;
+@btn-height-base: 56px;
 
 .ant-alert {
   padding: 15px 16px !important;
+}
+
+.ant-input,
+.ant-input-number,
+.ant-input-number-input {
+  min-height: @input-height-base;
+  font-size: 0.9rem;
 }
