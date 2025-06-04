@@ -1,0 +1,20 @@
+@use "_colors" as *;
+@use "_fonts" as *;
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-line {
+  display: inline-block;
+  width: 6px;
+  height: 1.7em;
+  background-color: $primary-color;
+  border-radius: 6px;
+  margin-right: 0.75em;
+}
+
+.title-text {
+  @include font-title;
+}
