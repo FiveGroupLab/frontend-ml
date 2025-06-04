@@ -7,6 +7,7 @@ import { NzInputModule } from "ng-zorro-antd/input";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzButtonModule } from "ng-zorro-antd/button";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-evaluation",
@@ -25,6 +26,7 @@ import { NzButtonModule } from "ng-zorro-antd/button";
 })
 export class EvaluationComponent {
   private fb = inject(NonNullableFormBuilder);
+  private router = inject(Router);
   validateForm = this.fb.group({
     totalActivity: this.fb.control("", [Validators.required]),
     bodyMass: this.fb.control("", [Validators.required]),
@@ -36,6 +38,7 @@ export class EvaluationComponent {
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log("submit", this.validateForm.value);
+      this.router.navigate(["/hypertension-risk/processing"]);
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {

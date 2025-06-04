@@ -8,7 +8,7 @@ import { Router, RouterModule } from "@angular/router";
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent {
-  routes = [{ name: "Evaluación", url: "hypertension-risk/evaluation", active: false }];
+  routes = [{ name: "Evaluación", url: "hypertension-risk", active: false }];
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {

@@ -8,6 +8,8 @@ import es from "@angular/common/locales/es";
 import { FormsModule } from "@angular/forms";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { provideHttpClient } from "@angular/common/http";
+import { provideLottieOptions } from "ngx-lottie";
+import player from "lottie-web";
 
 registerLocaleData(es);
 
@@ -19,5 +21,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
     provideHttpClient(),
+    provideLottieOptions({
+      player: () => player,
+    }),
   ],
 };

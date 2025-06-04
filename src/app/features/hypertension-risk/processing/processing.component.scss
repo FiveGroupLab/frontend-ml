@@ -1,0 +1,29 @@
+@use "_fonts" as *;
+@use "_colors" as *;
+
+.processing-section app-title {
+  display: block;
+  margin-top: 1rem;
+}
+
+.lottie-center {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.processing-message {
+  text-align: center;
+  margin-top: 0.3rem;
+  color: $primary-color;
+  font-weight: $font-weight-regular;
+  max-width: 310px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
