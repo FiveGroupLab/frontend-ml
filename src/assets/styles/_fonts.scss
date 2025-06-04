@@ -12,14 +12,13 @@ $font-size-xxl: 2rem; // 32px
 $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
-$font-weight-bold: 700;
+$font-weight-bold: 800;
 
 @mixin font-base {
   font-family: $font-family-base;
   font-size: $font-size-md;
   font-weight: $font-weight-regular;
   line-height: 1.5;
-  color: #222;
 
   @include mq-xs {
     font-size: $font-size-sm;
@@ -46,7 +45,22 @@ $font-weight-bold: 700;
 @mixin font-subtitle {
   font-family: $font-family-base;
   font-size: $font-size-lg;
-  font-weight: $font-weight-medium;
+  font-weight: $font-weight-bold;
+  line-height: 1.3;
+
+  @include mq-xs {
+    font-size: $font-size-md;
+  }
+  @include mq-lg {
+    font-size: $font-size-xl;
+  }
+}
+
+// Nuevo mixin para subtitle con peso opcional
+@mixin font-subtitle-custom($weight: $font-weight-bold) {
+  font-family: $font-family-base;
+  font-size: $font-size-lg;
+  font-weight: $weight;
   line-height: 1.3;
 
   @include mq-xs {

@@ -1,10 +1,66 @@
 @use "_fonts" as *;
+@use "_colors" as *;
 
 .font-base {
   @include font-base;
 }
 
+.evaluation-section app-title {
+  display: block;
+  margin-top: 1rem;
+}
+
 .evaluation-section p {
+  margin-top: 2rem;
+}
+
+.evaluation-section nz-alert {
   margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+}
+
+.step-title {
+  margin-top: 1.5rem;
+  @include font-subtitle;
+}
+
+.step-info {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid $primary-color;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.step-circle-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $primary-color;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+.step-circle-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: $primary-color;
+  border-radius: 50%;
+  color: $white-color;
+  font-weight: $font-weight-regular;
+  font-size: 1.1rem;
+}
+
+.step-label {
+  color: $primary-color;
+  margin-left: 0.25rem;
+  font-size: $font-size-lg;
+  @include font-subtitle-custom($font-weight-medium);
 }
