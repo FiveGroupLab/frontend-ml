@@ -1,15 +1,15 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from "@angular/core";
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from "@angular/core";
 import { provideRouter } from "@angular/router";
 
-import { routes } from "./app.routes";
-import { es_ES, provideNzI18n } from "ng-zorro-antd/i18n";
 import { registerLocaleData } from "@angular/common";
+import { provideHttpClient } from "@angular/common/http";
 import es from "@angular/common/locales/es";
 import { FormsModule } from "@angular/forms";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { provideHttpClient } from "@angular/common/http";
-import { provideLottieOptions } from "ngx-lottie";
 import player from "lottie-web";
+import { es_ES, provideNzI18n } from "ng-zorro-antd/i18n";
+import { provideLottieOptions } from "ngx-lottie";
+import { routes } from "./app.routes";
 
 registerLocaleData(es);
 
