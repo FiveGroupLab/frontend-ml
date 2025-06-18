@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { delay } from "rxjs/operators";
+import { Observable } from "rxjs";
 import { ApiResponse } from "../../../shared/interfaces/api-response.interface";
 import { HypertensionRiskParams } from "../../../shared/interfaces/hypertension-risk-params.interface";
 
@@ -9,22 +8,18 @@ import { HypertensionRiskParams } from "../../../shared/interfaces/hypertension-
   providedIn: "root",
 })
 export class HypertensionRiskService {
-  // private apiUrl = "https://tu-api-url.com/predict-hypertension";
+  private apiUrl = "https://backend-ml-misz.onrender.com/predict";
 
   constructor(private http: HttpClient) {}
 
   predictRisk(params: HypertensionRiskParams): Observable<ApiResponse> {
-    // Simulación de respuesta después de 5 segundos
-    const mockResponse: ApiResponse = {
-      ok: true,
-      message: "Predicción simulada exitosa",
-      data: {
-        risk: true,
-        number: 90.5,
-        params,
-      },
+    const body = {
+      peso: Number(params.weight),
+      estatura: Number(params.height),
+      actividad_total: Number(params.totalActivity),
+      tension_arterial: Number(params.bloodPressure),
+      edad: Number(params.age),
     };
-    return of(mockResponse).pipe(delay(5000));
-    // return this.http.post<ApiResponse>(this.apiUrl, params);
+    return this.http.post<ApiResponse>(this.apiUrl, body);
   }
 }

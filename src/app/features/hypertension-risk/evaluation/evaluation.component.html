@@ -13,6 +13,32 @@
       <div nz-row [nzGutter]="[48, 8]">
         <div nz-col nzXs="24" nzSm="24" nzMd="12">
           <nz-form-item>
+            <nz-form-label nzRequired>Peso</nz-form-label>
+            <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
+              <nz-input-number
+                formControlName="weight"
+                nzMin="0"
+                nzPlaceHolder="Ingrese el peso del paciente"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>Estatura</nz-form-label>
+            <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
+              <nz-input-number
+                formControlName="height"
+                nzMin="0"
+                nzPlaceHolder="Ingrese la estatura del paciente"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="[48, 8]">
+        <div nz-col nzXs="24" nzSm="24" nzMd="12">
+          <nz-form-item>
             <nz-form-label nzRequired>Actividad total</nz-form-label>
             <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
               <nz-input-number
@@ -25,20 +51,6 @@
         </div>
         <div nz-col nzXs="24" nzSm="24" nzMd="12">
           <nz-form-item>
-            <nz-form-label nzRequired>Masa corporal</nz-form-label>
-            <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
-              <nz-input-number
-                formControlName="bodyMass"
-                nzMin="0"
-                nzPlaceHolder="Ingrese su masa corporal"
-              />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </div>
-      <div nz-row [nzGutter]="[48, 8]">
-        <div nz-col nzXs="24" nzSm="24" nzMd="12">
-          <nz-form-item>
             <nz-form-label nzRequired>Tensión arterial</nz-form-label>
             <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
               <nz-input-number
@@ -49,28 +61,16 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="24" nzMd="12">
-          <nz-form-item>
-            <nz-form-label nzRequired>Peso promedio</nz-form-label>
-            <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
-              <nz-input-number
-                formControlName="averageWeight"
-                nzMin="0"
-                nzPlaceHolder="Ingrese el peso promedio"
-              />
-            </nz-form-control>
-          </nz-form-item>
-        </div>
       </div>
       <div nz-row [nzGutter]="[48, 8]">
         <div nz-col nzXs="24" nzSm="24" nzMd="12">
           <nz-form-item>
-            <nz-form-label nzRequired>Estatura promedio</nz-form-label>
+            <nz-form-label nzRequired>Edad</nz-form-label>
             <nz-form-control nzHasFeedback nzErrorTip="Campo requerido">
               <nz-input-number
-                formControlName="averageHeight"
+                formControlName="age"
                 nzMin="0"
-                nzPlaceHolder="Ingrese la estatura promedio"
+                nzPlaceHolder="Ingrese la edad del paciente"
               />
             </nz-form-control>
           </nz-form-item>

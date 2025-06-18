@@ -12,8 +12,8 @@ import { switchMap, takeUntil } from "rxjs/operators";
 import { TitleComponent } from "../../../shared/components/title/title.component";
 import { ApiResponse } from "../../../shared/interfaces/api-response.interface";
 import { HypertensionRiskParams } from "../../../shared/interfaces/hypertension-risk-params.interface";
-import { HypertensionRiskService } from "../services/hypertension-risk.service";
 import { ProcessingComponent } from "../processing/processing.component";
+import { HypertensionRiskService } from "../services/hypertension-risk.service";
 
 @Component({
   selector: "app-evaluation",
@@ -41,10 +41,10 @@ export class EvaluationComponent implements OnDestroy {
 
   public validateForm = this.fb.group({
     totalActivity: this.fb.control("", [Validators.required]),
-    bodyMass: this.fb.control("", [Validators.required]),
     bloodPressure: this.fb.control("", [Validators.required]),
-    averageWeight: this.fb.control("", [Validators.required]),
-    averageHeight: this.fb.control("", [Validators.required]),
+    weight: this.fb.control("", [Validators.required]),
+    height: this.fb.control("", [Validators.required]),
+    age: this.fb.control("", [Validators.required]),
   });
 
   public loading = false;
