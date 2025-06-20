@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
-import { TitleComponent } from "../../../shared/components/title/title.component";
-import { NzGridModule } from "ng-zorro-antd/grid";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NzButtonModule } from "ng-zorro-antd/button";
-import { Router } from "@angular/router";
+import { NzGridModule } from "ng-zorro-antd/grid";
+import { TitleComponent } from "../../../shared/components/title/title.component";
+import { IHypertensionRiskParams } from "../../../shared/interfaces/hypertension-risk-params.interface";
 
 @Component({
   selector: "app-results",
@@ -11,18 +12,36 @@ import { Router } from "@angular/router";
   standalone: true,
   imports: [TitleComponent, NzGridModule, NzButtonModule],
 })
-export class ResultsComponent {
-  bodyMass = "12313";
-  totalActivity = "123";
-  bloodPressure = "123";
-  averageWeight = "11";
-  averageHeight = "222";
-  age = "332";
+export class ResultsComponent implements OnInit {
+  totalActivity = "";
+  bloodPressure = "";
+  weight = "";
+  height = "";
+  age = "";
 
   hasRisk = false;
-  riskPercent = 90;
 
-  constructor(private router: Router) {}
+  form: IHypertensionRiskParams | null = null;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.hasRisk = params["data"] === "true";
+      this.form = params["form"] ? JSON.parse(params["form"]) : null;
+
+      if (this.form) {
+        this.totalActivity = this.form.totalActivity.toString();
+        this.bloodPressure = this.form.bloodPressure.toString();
+        this.weight = this.form.weight.toString();
+        this.height = this.form.height.toString();
+        this.age = this.form.age.toString();
+      }
+    });
+  }
 
   goToEvaluation() {
     this.router.navigate(["/hypertension-risk/evaluation"]);

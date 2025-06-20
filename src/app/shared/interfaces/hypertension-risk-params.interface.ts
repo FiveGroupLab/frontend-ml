@@ -1,4 +1,4 @@
-export interface HypertensionRiskParams {
+export interface IHypertensionRiskParams {
   totalActivity: string;
   bloodPressure: string;
   weight: string;

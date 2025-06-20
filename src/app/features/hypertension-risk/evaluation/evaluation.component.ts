@@ -10,8 +10,8 @@ import { NzInputNumberModule } from "ng-zorro-antd/input-number";
 import { Subject } from "rxjs";
 import { switchMap, takeUntil } from "rxjs/operators";
 import { TitleComponent } from "../../../shared/components/title/title.component";
-import { ApiResponse } from "../../../shared/interfaces/api-response.interface";
-import { HypertensionRiskParams } from "../../../shared/interfaces/hypertension-risk-params.interface";
+import { IApiResponse } from "../../../shared/interfaces/api-response.interface";
+import { IHypertensionRiskParams } from "../../../shared/interfaces/hypertension-risk-params.interface";
 import { ProcessingComponent } from "../processing/processing.component";
 import { HypertensionRiskService } from "../services/hypertension-risk.service";
 
@@ -36,7 +36,7 @@ export class EvaluationComponent implements OnDestroy {
   private router = inject(Router);
   private hypertensionRiskService = inject(HypertensionRiskService);
 
-  private apiTrigger$ = new Subject<HypertensionRiskParams>();
+  private apiTrigger$ = new Subject<IHypertensionRiskParams>();
   private destroy$ = new Subject<void>();
 
   public validateForm = this.fb.group({
@@ -61,20 +61,20 @@ export class EvaluationComponent implements OnDestroy {
   private subscribeToApi(): void {
     this.apiTrigger$
       .pipe(
-        switchMap((params: HypertensionRiskParams) =>
+        switchMap((params: IHypertensionRiskParams) =>
           this.hypertensionRiskService.predictRisk(params),
         ),
         takeUntil(this.destroy$),
       )
       .subscribe({
-        next: (response: ApiResponse) => this.handleApiResponse(response),
+        next: (response: IApiResponse) => this.handleApiResponse(response),
         error: () => this.handleApiError(),
       });
   }
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      const params = this.validateForm.value as HypertensionRiskParams;
+      const params = this.validateForm.value as IHypertensionRiskParams;
       this.loading = true;
       this.apiTrigger$.next(params);
     } else {
@@ -87,11 +87,13 @@ export class EvaluationComponent implements OnDestroy {
     }
   }
 
-  private handleApiResponse(response: ApiResponse): void {
+  private handleApiResponse(response: IApiResponse): void {
     this.loading = false;
     console.log("Respuesta de la API:", response);
     if (response.ok) {
-      this.router.navigate(["/hypertension-risk/results"]);
+      this.router.navigate(["/hypertension-risk/results"], {
+        queryParams: { data: response.data, form: JSON.stringify(this.validateForm.value) },
+      });
     }
   }
 

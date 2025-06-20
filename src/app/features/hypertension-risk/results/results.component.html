@@ -1,16 +1,14 @@
 <section class="results-section">
   <h1><app-title title="Resultados de la Evaluación"></app-title></h1>
   @if (!hasRisk) {
-    <div class="no-risk-title">
-      ✅ Sin riesgo significativo de hipertensión ({{ riskPercent }}%)
-    </div>
+    <div class="no-risk-title">✅ Sin riesgo significativo de hipertensión</div>
     <div class="no-risk-description">
       El paciente no presenta indicios de riesgo relevante de hipertensión arterial. Se recomienda
       mantener hábitos de vida saludables y realizar controles médicos periódicos para preservar su
       bienestar.
     </div>
   } @else {
-    <div class="risk-title">⚠️ Riesgo detectado de hipertensión ({{ riskPercent }}%)</div>
+    <div class="risk-title">⚠️ Riesgo detectado de hipertensión</div>
     <div class="risk-description">
       El paciente presenta un riesgo considerable de hipertensión arterial. Se aconseja consultar a
       un profesional de la salud para una evaluación clínica detallada y considerar ajustes en el
@@ -19,17 +17,15 @@
   }
   <p class="result-based-on">
     Este resultado se ha generado a partir del análisis de los siguientes datos proporcionados:
-    <span class="result-label">Masa corporal</span>: <span class="result-value">{{ bodyMass }}</span
-    >, <span class="result-label">Actividad total</span>:
-    <span class="result-value">{{ totalActivity }}</span
-    >, <span class="result-label">Tensión arterial</span>:
-    <span class="result-value">{{ bloodPressure }}</span
-    >, <span class="result-label">Peso promedio</span>:
-    <span class="result-value">{{ averageWeight }}</span
-    >, <span class="result-label">Estatura promedio</span>:
-    <span class="result-value">{{ averageHeight }}</span
-    >, <span class="result-label">Edad</span>: <span class="result-value">{{ age }}</span
-    >.
+  </p>
+  <p class="result-based-on">
+    <span class="result-label">Actividad total</span>:
+    <span class="result-value">{{ totalActivity }} min/semana</span>,
+    <span class="result-label">Tensión arterial</span>:
+    <span class="result-value">{{ bloodPressure }} mmHg</span>,
+    <span class="result-label">Peso</span>: <span class="result-value">{{ weight }} kg</span>,
+    <span class="result-label">Estatura</span>: <span class="result-value">{{ height }} m</span>,
+    <span class="result-label">Edad</span>: <span class="result-value">{{ age }} años</span>.
   </p>
   <div nz-row [nzGutter]="[48, 8]">
     <div
