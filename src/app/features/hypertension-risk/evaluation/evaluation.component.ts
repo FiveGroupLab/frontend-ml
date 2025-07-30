@@ -5,8 +5,10 @@ import { NzAlertModule } from "ng-zorro-antd/alert";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzGridModule } from "ng-zorro-antd/grid";
+import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { NzInputNumberModule } from "ng-zorro-antd/input-number";
+import { NzToolTipModule } from "ng-zorro-antd/tooltip";
 import { Subject } from "rxjs";
 import { switchMap, takeUntil } from "rxjs/operators";
 import { TitleComponent } from "../../../shared/components/title/title.component";
@@ -27,6 +29,8 @@ import { HypertensionRiskService } from "../services/hypertension-risk.service";
     NzGridModule,
     NzButtonModule,
     ProcessingComponent,
+    NzIconModule,
+    NzToolTipModule,
   ],
   templateUrl: "./evaluation.component.html",
   styleUrl: "./evaluation.component.scss",
