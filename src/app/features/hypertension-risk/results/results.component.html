@@ -2,31 +2,70 @@
   <h1><app-title title="Resultados de la Evaluación"></app-title></h1>
   @if (!hasRisk) {
     <div class="no-risk-title">✅ Sin riesgo significativo de hipertensión</div>
-    <div class="no-risk-description">
-      El paciente no presenta indicios de riesgo relevante de hipertensión arterial. Se recomienda
-      mantener hábitos de vida saludables y realizar controles médicos periódicos para preservar su
-      bienestar.
-    </div>
   } @else {
     <div class="risk-title">⚠️ Riesgo detectado de hipertensión</div>
-    <div class="risk-description">
-      El paciente presenta un riesgo considerable de hipertensión arterial. Se aconseja consultar a
-      un profesional de la salud para una evaluación clínica detallada y considerar ajustes en el
-      estilo de vida para reducir el riesgo.
-    </div>
   }
-  <p class="result-based-on">
-    Este resultado se ha generado a partir del análisis de los siguientes datos proporcionados:
-  </p>
-  <p class="result-based-on">
-    <span class="result-label">Actividad total</span>:
-    <span class="result-value">{{ totalActivity }} min/semana</span>,
-    <span class="result-label">Tensión arterial</span>:
-    <span class="result-value">{{ bloodPressure }} mmHg</span>,
-    <span class="result-label">Peso</span>: <span class="result-value">{{ weight }} kg</span>,
-    <span class="result-label">Estatura</span>: <span class="result-value">{{ height }} m</span>,
-    <span class="result-label">Edad</span>: <span class="result-value">{{ age }} años</span>.
-  </p>
+  <div class="result-based-on">
+    <nz-collapse>
+      <nz-collapse-panel nzHeader="Recomendación de Inteligencia Artificial." [nzActive]="true">
+        @if (!hasRisk) {
+          <div class="no-risk-description margin-0">
+            {{
+              riskData?.respuesta ||
+                "No se ha detectado riesgo significativo de hipertensión arterial en el paciente."
+            }}
+          </div>
+        } @else {
+          <div class="risk-description margin-0">
+            {{
+              riskData?.respuesta ||
+                "Se ha detectado un riesgo significativo de hipertensión arterial en el paciente."
+            }}
+          </div>
+        }
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+  <div class="result-based-on">
+    <nz-collapse>
+      <nz-collapse-panel nzHeader="Datos utilizados." [nzActive]="false">
+        <p>
+          Este resultado se ha generado a partir del análisis de los siguientes datos
+          proporcionados.
+        </p>
+        <p class="result-based-on">
+          <span class="result-label">Actividad total</span>:
+          <span class="result-value">{{ totalActivity }} min/semana</span>,
+          <span class="result-label">Tensión arterial</span>:
+          <span class="result-value">{{ bloodPressure }} mmHg</span>,
+          <span class="result-label">Peso</span>: <span class="result-value">{{ weight }} kg</span>,
+          <span class="result-label">Estatura</span>:
+          <span class="result-value">{{ height }} m</span>, <span class="result-label">Edad</span>:
+          <span class="result-value">{{ age }} años</span>.
+        </p>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+  <div class="result-based-on">
+    <nz-collapse>
+      <nz-collapse-panel nzHeader="Modelo utilizado." [nzActive]="false">
+        <nz-select
+          (ngModelChange)="changeModel($event)"
+          [(ngModel)]="selectModel"
+          nzPlaceHolder="Seleccionar modelo"
+          class="select-model"
+        >
+          <nz-option nzValue="XGB" nzLabel="XGboost"></nz-option>
+          <nz-option nzValue="RF" nzLabel="Random Forest"></nz-option>
+          <nz-option nzValue="LOG" nzLabel="Regresión Logística"></nz-option>
+        </nz-select>
+        <div style="margin-top: 40px">
+          <img width="400" src="{{ confusionMatrix }}" alt="" />
+        </div>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+
   <div nz-row [nzGutter]="[48, 8]">
     <div
       nz-col
@@ -38,7 +77,7 @@
         class="button-row"
         nz-button
         nzBlock="true"
-        nzType="dashed"
+        nzType="primary"
         (click)="goToEvaluation()"
       >
         Nueva evaluación

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NzAlertModule } from "ng-zorro-antd/alert";
@@ -35,12 +35,13 @@ import { HypertensionRiskService } from "../services/hypertension-risk.service";
   templateUrl: "./evaluation.component.html",
   styleUrl: "./evaluation.component.scss",
 })
-export class EvaluationComponent implements OnDestroy {
+export class EvaluationComponent implements OnDestroy, OnInit {
   private fb = inject(NonNullableFormBuilder);
   private router = inject(Router);
   private hypertensionRiskService = inject(HypertensionRiskService);
 
   private apiTrigger$ = new Subject<IHypertensionRiskParams>();
+
   private destroy$ = new Subject<void>();
 
   public validateForm = this.fb.group({
@@ -55,6 +56,11 @@ export class EvaluationComponent implements OnDestroy {
 
   constructor() {
     this.subscribeToApi();
+  }
+
+  ngOnInit(): void {
+    localStorage.removeItem("hypertensionRiskData");
+    localStorage.removeItem("hypertensionRiskForm");
   }
 
   ngOnDestroy(): void {
@@ -94,10 +100,10 @@ export class EvaluationComponent implements OnDestroy {
   private handleApiResponse(response: IApiResponse): void {
     this.loading = false;
     console.log("Respuesta de la API:", response);
+    localStorage.setItem("hypertensionRiskData", JSON.stringify(response.data));
+    localStorage.setItem("hypertensionRiskForm", JSON.stringify(this.validateForm.value));
     if (response.ok) {
-      this.router.navigate(["/hypertension-risk/results"], {
-        queryParams: { data: response.data, form: JSON.stringify(this.validateForm.value) },
-      });
+      this.router.navigate(["/hypertension-risk/results"]);
     }
   }
 
