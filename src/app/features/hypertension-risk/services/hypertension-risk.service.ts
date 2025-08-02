@@ -9,7 +9,7 @@ import { IPredictRisk } from "../../../shared/interfaces/predict-risk.interface"
   providedIn: "root",
 })
 export class HypertensionRiskService {
-  private apiUrl = "https://backendml-production-1db3.up.railway.app/predict";
+  private apiUrl = "http://localhost:8000/predict";
 
   constructor(private http: HttpClient) {}
 
